@@ -11,6 +11,8 @@ import {
   View,
 } from 'react-native';
 import { modalStyles } from '../styles/modalStyles';
+import { foodApi } from '../api/foodApi';
+
 
 const AddFoodModal = ({ visible, onClose }) => {
   const [foodName, setFoodName] = useState('');
@@ -42,19 +44,11 @@ const AddFoodModal = ({ visible, onClose }) => {
   const handleAddFood = async () => {
     if (foodName.trim()) {
       try {
-        // Here you can call your backend API
-        // const response = await fetch('YOUR_API_ENDPOINT', {
-        //   method: 'POST',
-        //   headers: {
-        //     'Content-Type': 'application/json',
-        //   },
-        //   body: JSON.stringify({ food: foodName }),
-        // });
-        // const data = await response.json();
-        
+        await foodApi(foodName);
         Alert.alert('Success', `Added: ${foodName}`);
         handleClose();
       } catch (error) {
+        console.log(error);
         Alert.alert('Error', 'Failed to add food item');
       }
     } else {
