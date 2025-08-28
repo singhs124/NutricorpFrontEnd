@@ -1,4 +1,5 @@
 export const calculateTotals = (quantities, nutritionData) => {
+  console.log(quantities);
   let totals = {
     calories: 0,
     protein: 0,
@@ -6,13 +7,19 @@ export const calculateTotals = (quantities, nutritionData) => {
     fat: 0
   };
 
-  nutritionData.forEach((food, index) => {
-    const quantity = quantities[index] || 0;
-    totals.calories += food.calories * quantity;
-    totals.protein += food.protein * quantity;
-    totals.fiber += food.fiber * quantity;
-    totals.fat += food.fat * quantity;
-  });
+  for(const foodId in quantities){
+    console.log(foodId);
+    const quantity = quantities[foodId];
+    if(quantity>0){
+      const FoodItem = nutritionData.find((item)=>String(item.id) === String(foodId));
+      if(FoodItem){
+        totals.calories += FoodItem.calories * quantity;
+        totals.protein += FoodItem.protein * quantity;
+        totals.fiber += FoodItem.fiber * quantity;
+        totals.fat += FoodItem.fat * quantity;
+      }
+    }
+  }
 
   return {
     calories: Math.round(totals.calories),
