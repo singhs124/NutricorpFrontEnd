@@ -76,7 +76,7 @@ const CustomTabBar = ({ state, descriptors, navigation }) => {
         })}
       </View>
 
-      <AddFoodModal visible={modalVisible} onClose={closeModal} />
+      <AddFoodModal visible={modalVisible} onClose={closeModal}/>
     </>
   );
 };

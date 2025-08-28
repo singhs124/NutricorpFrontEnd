@@ -112,4 +112,13 @@ export const modalStyles = StyleSheet.create({
     fontWeight: '600',
     color: COLORS.white,
   },
+  addFoodButtonDisabled: {
+  opacity: 0.4,
+  backgroundColor: '#F0F0F0',
+  borderWidth: 1,
+  borderColor: '#D0D0D0',
+  shadowColor: 'transparent',
+  shadowOpacity: 0,
+  elevation: 0,
+},
 });
